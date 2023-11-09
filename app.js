@@ -1,5 +1,4 @@
-const game = document.getElementById('game')
-const scoreDisplay = document.getElementById('score')
+const game = document.getElementById('game');
 
 const jeopardyCategories = [
     {
@@ -62,23 +61,23 @@ const jeopardyCategories = [
             { question: "What is the deepest part of the ocean?", answer: "Mariana Trench", level: 60 },
         ]
     }
-]
+];
 
 function addCategory(category) {
-    const column = document.createElement('div')
-    column.classList.add('genre-column')
+    const column = document.createElement('div');
+    column.classList.add('genre-column');
 
-    const genreTitle = document.createElement('div')
-    genreTitle.classList.add('genre-title')
-    genreTitle.innerHTML = category.genre
+    const genreTitle = document.createElement('div');
+    genreTitle.classList.add('genre-title');
+    genreTitle.innerHTML = category.genre;
 
-    column.appendChild(genreTitle)
-    game.append(column)
+    column.appendChild(genreTitle);
+    game.append(column);
 
     category.questions.forEach(question => {
-        const card = document.createElement('div')
-        card.classList.add('card')
-        column.append(card)
+        const card = document.createElement('div');
+        card.classList.add('card');
+        column.append(card);
 
         switch (question.level) {
             case 10:
@@ -93,12 +92,12 @@ function addCategory(category) {
                 break;
         }
 
-        card.setAttribute('data-question', question.question)
-        card.setAttribute('data-answer', question.answer)
-        card.setAttribute('data-value', card.getInnerHTML())
+        card.setAttribute('data-question', question.question);
+        card.setAttribute('data-answer', question.answer);
+        card.setAttribute('data-value', card.getInnerHTML());
 
-        card.addEventListener('click', flipCard)
-    })
+        card.addEventListener('click', flipCard);
+    });
 }
 
 function flipCard() {
@@ -114,41 +113,42 @@ function flipCard() {
     closeBtn.addEventListener('click', function () {
         modal.remove();
     });
-
     content.appendChild(closeBtn);
 
     const questionText = document.createElement('div');
     questionText.classList.add('modal-text');
     questionText.innerHTML = this.getAttribute('data-question');
-    
-    const answerButton = document.createElement('button');
-    answerButton.classList.add('answer-button');
-    answerButton.innerHTML = "Show Answer";
 
-    answerButton.setAttribute('data-answer', this.getAttribute('data-answer'));
+    // Add this code to get a reference to the card
+    const card = this;
 
-    answerButton.addEventListener('click', function () {
-        questionText.style.display = 'none'; // Hide the question
-        answerButton.style.display = 'none'; // Hide the "Show Answer" button
+    // Check if the card has already been clicked
+    if (!card.classList.contains('clicked')) {
+        card.classList.add('clicked');
 
-        const answerText = document.createElement('div');
-        answerText.classList.add('modal-text');
+        const answerButton = document.createElement('button');
+        answerButton.classList.add('answer-button');
+        answerButton.innerHTML = "Show Answer";
+        answerButton.setAttribute('data-answer', this.getAttribute('data-answer'));
 
-        // Access the data-answer attribute directly from the answer button
-        const answer = answerButton.getAttribute('data-answer');
-        answerText.innerHTML = answer;
+        answerButton.addEventListener('click', function () {
+            questionText.style.display = 'none';
+            answerButton.style.display = 'none';
 
-        content.appendChild(answerText);
-    });
+            const answerText = document.createElement('div');
+            answerText.classList.add('modal-text');
+            const answer = answerButton.getAttribute('data-answer');
+            answerText.innerHTML = answer;
 
+            content.appendChild(answerText);
+        });
 
-    content.appendChild(questionText);
-    content.appendChild(answerButton);
+        content.appendChild(questionText);
+        content.appendChild(answerButton);
 
-    modal.appendChild(content);
-
-    document.body.appendChild(modal);
+        modal.appendChild(content);
+        document.body.appendChild(modal);
+    }
 }
 
-
-jeopardyCategories.forEach(category => addCategory(category))
+jeopardyCategories.forEach(category => addCategory(category));
