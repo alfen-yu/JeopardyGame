@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(46, 46, 46);
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Anton', sans-serif;
+}
+
+#game {
+    display: flex;
+    background-color: rgb(32, 32, 32);
+}
+
+.card {
+    width: 160px;
+    height: 120px;
+    background-color: rgb(26, 26, 255);
+    border-left: solid rgb(19, 19, 160) 10px;
+    border-right: solid rgb(11, 11, 91) 10px;
+    border-bottom: solid rgb(20, 20, 89) 10px;
+    border-top: solid rgb(1, 61, 200) 10px;
+    text-align: center;
+    font-size: 100px;
+    margin: 5px;
+    padding: 10px;
+    line-height: 120px;
+}
+
+.card.clicked {
+    filter: grayscale(100%);
+    pointer-events: none; /* Disable further clicks */
+}
+
+
+.modal {
+    position: fixed;
+    font-size: 1em;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: black;
+    padding: 2em; /* Adjust the padding in relation to the text size */
+    border-radius: 3em; /* Adjust the border-radius in relation to the text size */
+    position: relative;
+    text-align: center;
+    width: 100%; /* Adjust the width as needed */
+    max-width: 30em; /* Set a maximum width if desired */
+    height: auto; /* Let the height adjust based on content */
+    font-size: 3em; /* Adjust the font size in relation to the modal content text */
+}
+
+
+.close-btn {
+    color: red;
+    position: absolute;
+    top: 1em; /* Adjust the top position in relation to the text size */
+    right: 1em; /* Adjust the right position in relation to the text size */
+    font-size: 1.5em; /* Adjust the font size of the close button in relation to the text size */
+    cursor: pointer;
+    
+}
+
+.answer-button {
+    background-color: rgb(26, 26, 255);
+    color: white;
+    border-radius: 40px;
+    padding: 0.5em; /* Adjust the padding in relation to the text size */
+    margin-top: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em; /* Adjust the font size of the button text in relation to the text size */
+}
