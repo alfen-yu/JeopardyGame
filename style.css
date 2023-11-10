@@ -17,6 +17,17 @@ body {
     background-color: rgb(32, 32, 32);
 }
 
+.genre-title {
+    font-size: 35px;
+    text-align: center;
+}
+
+.heading {
+    color: yellow;
+    font-size: 60px;
+    font-weight: normal;
+}
+
 .card {
     width: 160px;
     height: 120px;
