@@ -43,7 +43,6 @@ body {
     line-height: 120px;
 }
 
-/* When the Tile is clicked */
 .card.clicked {
     filter: grayscale(100%);
     pointer-events: none; 
@@ -65,23 +64,23 @@ body {
 
 .modal-content {
     background-color: black;
-    padding: 2em; /* Adjust the padding in relation to the text size */
-    border-radius: 3em; /* Adjust the border-radius in relation to the text size */
+    padding: 2em;
+    border-radius: 3em; 
     position: relative;
     text-align: center;
-    width: 100%; /* Adjust the width as needed */
-    max-width: 30em; /* Set a maximum width if desired */
-    height: auto; /* Let the height adjust based on content */
-    font-size: 3em; /* Adjust the font size in relation to the modal content text */
+    width: 100%; 
+    max-width: 30em; 
+    height: auto; 
+    font-size: 3em; 
 }
 
 
 .close-btn {
     color: white;
     position: absolute;
-    top: 1em; /* Adjust the top position in relation to the text size */
-    right: 1em; /* Adjust the right position in relation to the text size */
-    font-size: 1.5em; /* Adjust the font size of the close button in relation to the text size */
+    top: 1em; 
+    right: 1em; 
+    font-size: 1.5em; 
     cursor: pointer;
     
 }
@@ -90,31 +89,9 @@ body {
     background-color: rgb(26, 26, 255);
     color: white;
     border-radius: 40px;
-    padding: 0.5em; /* Adjust the padding in relation to the text size */
+    padding: 0.5em; 
     margin-top: 50px;
     border: none;
     cursor: pointer;
-    font-size: 1em; /* Adjust the font size of the button text in relation to the text size */
-}
-
-
-#team-scores {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-}
-
-.team-score {
-    background-color: #333;
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-    color: #fff;
-    margin: 0 10px;
-}
-
-.score {
-    font-size: 24px;
-    font-weight: bold;
-    margin-left: 5px;
+    font-size: 1em;
 }
