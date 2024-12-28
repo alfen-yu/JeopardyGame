@@ -84,7 +84,6 @@ const jeopardyCategories = [
 ];
 
 
-
 function addCategory(category) {
     const column = document.createElement('div');
     column.classList.add('genre-column');
@@ -116,7 +115,7 @@ function addCategory(category) {
 
         card.setAttribute('data-question', question.question);
         card.setAttribute('data-answer', question.answer);
-        card.setAttribute('data-value', card.getInnerHTML());
+        card.setAttribute('data-value', card.innerHTML); 
 
         card.addEventListener('click', flipCard);
     });
@@ -141,10 +140,8 @@ function flipCard() {
     questionText.classList.add('modal-text');
     questionText.innerHTML = this.getAttribute('data-question');
 
-    // Add this code to get a reference to the card
     const card = this;
 
-    // Check if the card has already been clicked
     if (!card.classList.contains('clicked')) {
         card.classList.add('clicked');
 

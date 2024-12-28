@@ -1,97 +1,191 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+:root {
+  --primary-blue: rgb(26, 26, 255);
+  --dark-bg: rgb(32, 32, 32);
+  --card-border-light: rgb(1, 61, 200);
+  --card-border-dark: rgb(11, 11, 91);
+}
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: rgb(46, 46, 46);
-    color: rgb(255, 255, 255);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: 'Anton', sans-serif;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  background-color: rgb(46, 46, 46);
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Anton", sans-serif;
+  box-sizing: border-box;
 }
 
 #game {
-    display: flex;
-    background-color: rgb(32, 32, 32);
+  display: flex;
+  background-color: var(--dark-bg);
+  padding: 20px;
+  border-radius: 15px;
+  gap: 10px;
+  max-width: 100%;
+  overflow-x: auto;
+  margin-bottom: 30px;
 }
 
 .genre-title {
-    font-size: 35px;
-    text-align: center;
+  font-size: clamp(24px, 3vw, 35px);
+  text-align: center;
+  padding: 10px;
+  color: yellow;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.genre-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 180px;
 }
 
 .heading {
-    color: yellow;
-    font-size: 60px;
-    font-weight: normal;
+  color: yellow;
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: normal;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
 }
 
 .card {
-    width: 160px;
-    height: 120px;
-    background-color: rgb(26, 26, 255);
-    border-left: solid rgb(19, 19, 160) 10px;
-    border-right: solid rgb(11, 11, 91) 10px;
-    border-bottom: solid rgb(20, 20, 89) 10px;
-    border-top: solid rgb(1, 61, 200) 10px;
-    text-align: center;
-    font-size: 100px;
-    margin: 5px;
-    padding: 10px;
-    line-height: 120px;
+  width: 160px;
+  height: 120px;
+  background-color: var(--primary-blue);
+  border: 4px solid var(--card-border-light);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 60px;
+  padding: 10px;
+  line-height: 120px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 .card.clicked {
-    filter: grayscale(100%);
-    pointer-events: none; 
+  filter: grayscale(100%);
+  pointer-events: none;
+  opacity: 0.7;
 }
 
+/* Modal Styles */
 .modal {
-    position: fixed;
-    font-size: 1em;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .modal-content {
-    background-color: black;
-    padding: 2em;
-    border-radius: 3em; 
+    background-color: var(--dark-bg);
+    padding: 40px 30px;
+    border-radius: 20px;
     position: relative;
     text-align: center;
-    width: 100%; 
-    max-width: 30em; 
-    height: auto; 
-    font-size: 3em; 
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
+.modal-text {
+    margin: 20px 0;
+    line-height: 1.6;
+    font-size: clamp(14px, 2.5vw, 20px);
+    font-weight: 300;
+    letter-spacing: 0.3px;
+}
 
 .close-btn {
-    color: white;
     position: absolute;
-    top: 1em; 
-    right: 1em; 
-    font-size: 1.5em; 
+    top: 15px;
+    right: 15px;
+    width: 36px;
+    height: 36px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    
+    font-size: 24px;
+    line-height: 1;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.2s;
+    padding-bottom: 4px; 
 }
 
 .answer-button {
-    background-color: rgb(26, 26, 255);
+    background-color: var(--primary-blue);
     color: white;
     border-radius: 40px;
-    padding: 0.5em; 
-    margin-top: 50px;
+    padding: 12px 25px;
+    margin-top: 20px;
     border: none;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.modal-text br {
+    margin-bottom: 10px;
+}
+
+.modal-text option {
+    margin: 8px 0;
+    display: block;
+}
+
+@media (max-width: 1200px) {
+    #game {
+        gap: 5px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .genre-title {
+        font-size: 16px;
+        min-height: 40px;
+    }
+    
+    .modal-content {
+        padding: 30px 20px;
+    }
 }
